@@ -2,6 +2,7 @@ import 'package:ecommerce_app/components/categories.dart';
 import 'package:ecommerce_app/components/item_card.dart';
 import 'package:ecommerce_app/constants.dart';
 import 'package:ecommerce_app/models/products.dart';
+import 'package:ecommerce_app/screens/details/details_screen.dart';
 import 'package:flutter/material.dart';
 
 class Body extends StatelessWidget {
@@ -35,8 +36,13 @@ class Body extends StatelessWidget {
               ),
               itemCount: products.length,
               itemBuilder: (BuildContext context, int index) => ItemCard(
-                product: products[index],
-              ),
+                  product: products[index],
+                  press: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => DetailsScreen(
+                                product: products[index],
+                              )))),
             ),
           ),
         )
