@@ -1,5 +1,7 @@
 import 'package:ecommerce_app/components/categories.dart';
+import 'package:ecommerce_app/components/item_card.dart';
 import 'package:ecommerce_app/constants.dart';
+import 'package:ecommerce_app/models/products.dart';
 import 'package:flutter/material.dart';
 
 class Body extends StatelessWidget {
@@ -21,6 +23,23 @@ class Body extends StatelessWidget {
           ),
         ),
         Categories(),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: kDefaultPaddin),
+            child: GridView.builder(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 0.75,
+                mainAxisSpacing: kDefaultPaddin,
+                crossAxisSpacing: kDefaultPaddin,
+              ),
+              itemCount: products.length,
+              itemBuilder: (BuildContext context, int index) => ItemCard(
+                product: products[index],
+              ),
+            ),
+          ),
+        )
       ],
     );
   }
