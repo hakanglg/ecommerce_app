@@ -1,8 +1,13 @@
 import 'package:ecommerce_app/constants.dart';
 import 'package:ecommerce_app/models/products.dart';
+import 'package:ecommerce_app/screens/details/components/add_to_cart.dart';
+import 'package:ecommerce_app/screens/details/components/cart_counter.dart';
 import 'package:ecommerce_app/screens/details/components/color_and_size.dart';
+import 'package:ecommerce_app/screens/details/components/counter_with_fav_button.dart';
+import 'package:ecommerce_app/screens/details/components/description.dart';
 import 'package:ecommerce_app/screens/details/components/product_title_with_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Body extends StatelessWidget {
   final Product product;
@@ -34,7 +39,21 @@ class Body extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.only(top: kDefaultPaddin),
                     child: Column(
-                      children: [ColorAndSize(product: product)],
+                      children: [
+                        ColorAndSize(product: product),
+                        SizedBox(
+                          height: kDefaultPaddin / 2,
+                        ),
+                        Description(product: product),
+                        SizedBox(
+                          height: kDefaultPaddin / 2,
+                        ),
+                        CounterWithFavButton(),
+                        SizedBox(
+                          height: kDefaultPaddin / 2,
+                        ),
+                        AddToCart(product: product)
+                      ],
                     ),
                   ),
                 ),
